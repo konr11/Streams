@@ -1,0 +1,6 @@
+class: 1
+public: 8
+private: 2
+void: 1
+return: 9
+this: 4
