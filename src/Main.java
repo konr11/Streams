@@ -6,10 +6,10 @@ public class Main {
 
 
         System.out.println("Hello and welcome!");
-//        WorkWithByte workWithByte = new WorkWithByte();
-//        workWithByte.readFile("Data\\note.java");
-//        WorkWithSymbols workWithSymbols = new WorkWithSymbols();
-//        workWithSymbols.readFile("Data\\note.java");
+        WorkWithByte workWithByte = new WorkWithByte();
+        workWithByte.readFile("Data\\note.java");
+        WorkWithSymbols workWithSymbols = new WorkWithSymbols();
+        workWithSymbols.readFile("Data\\note.java");
 
         FilmCollection fc = new FilmCollection();
         fc.addFilm(new Film("Интерстеллар", new Actor[]{new Actor("Мэттью", "Макконахи"), new Actor("Энн", "Хэтэуэй")}));

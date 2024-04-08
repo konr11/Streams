@@ -7,19 +7,19 @@ import java.util.ArrayList;
 // Используйте только символьные потоки ввода-вывода.
 
 public class WorkWithSymbols {
-    private final String[] Keywords = {"class", "public", "private", "void", "return", "this"};
+    private final String[] keywords = {"class", "public", "private", "void", "return", "this"};
     private ArrayList<Integer> index = new ArrayList<Integer>();
     private ArrayList<String> occurrences = new ArrayList<>();
-    private String res = "";
 
     public void readFile(String inpFile) {
+        StringBuilder res = new StringBuilder();
         try (BufferedReader fin = new BufferedReader(new FileReader(inpFile))) {
             int i;
             StringBuilder text = new StringBuilder();
             while ((i = fin.read()) != -1) {
                 text.append((char) i);
                 if ('\n' == (char) i) {
-                    for (String row : Keywords) {
+                    for (String row : keywords) {
                         int i1 = text.lastIndexOf(row);
                         if (i1 != -1) {
                             if (!index.contains(i1)) {
@@ -30,17 +30,17 @@ public class WorkWithSymbols {
                     }
                 }
             }
-            for (String item : Keywords) {
+            for (String item : keywords) {
                 int count = 0;
                 for (String row : occurrences) {
                     if (item.equals(row))
                         count++;
                 }
-                res = res + item + ": " + count + "\n";
+                res.append(item).append(": ").append(count).append("\n");
                 count = 0;
             }
             System.out.println(res);
-            System.out.println(writeToFile(res));
+            System.out.println(writeToFile(res.toString()));
 
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());

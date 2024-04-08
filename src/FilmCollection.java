@@ -1,5 +1,5 @@
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
 
 //Дана коллекция фильмов, содержащая информацию об актерах, снимавшихся в главных ролях (один актер мог сниматься и в нескольких фильмах).
@@ -8,7 +8,7 @@ import java.util.Objects;
 public class FilmCollection implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    ArrayList<Film> films = new ArrayList<>();
+    HashSet<Film> films = new HashSet<>();
 
     public void addFilm(Film film) {
         if (!films.contains(film)) {
@@ -18,7 +18,7 @@ public class FilmCollection implements Serializable {
         }
     }
 
-    public ArrayList<Film> getFilms() {
+    public HashSet<Film> getFilms() {
         return films;
     }
 
