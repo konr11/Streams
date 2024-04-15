@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 
 //Прочитайте файл, содержащий код на языке Java.
@@ -15,10 +16,10 @@ import java.util.ArrayList;
 public class WorkWithByte {
 
     private final String[] keywords = {"class", "public", "private", "void", "return", "this"};
-    private ArrayList<Integer> index = new ArrayList<Integer>();
-    private ArrayList<String> occurrences = new ArrayList<>();
 
-    public void readFile(String inpFile) {
+    public void readFile(String inpFile, String outFile) {
+        HashSet<Integer> index = new HashSet<Integer>();
+        ArrayList<String> occurrences = new ArrayList<>();
         StringBuilder res = new StringBuilder();
         try (FileInputStream fin = new FileInputStream(inpFile)) {
             int i;
@@ -48,7 +49,7 @@ public class WorkWithByte {
                 count = 0;
             }
             System.out.println(res);
-            System.out.println(writeToFile(res.toString()));
+            System.out.println(writeToFile(outFile, res.toString()));
 
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
@@ -57,8 +58,8 @@ public class WorkWithByte {
         }
     }
 
-    private String writeToFile(String text) {
-        try (FileOutputStream fos = new FileOutputStream("ResultByte.txt")) {
+    private String writeToFile(String file, String text) {
+        try (FileOutputStream fos = new FileOutputStream(file)) {
             byte[] buffer = text.getBytes();
 
             fos.write(buffer, 0, buffer.length);

@@ -8,7 +8,7 @@ import java.util.Objects;
 public class FilmCollection implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    HashSet<Film> films = new HashSet<>();
+    private HashSet<Film> films = new HashSet<>();
 
     public void addFilm(Film film) {
         if (!films.contains(film)) {

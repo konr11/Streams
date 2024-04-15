@@ -7,9 +7,9 @@ public class Main {
 
         System.out.println("Hello and welcome!");
         WorkWithByte workWithByte = new WorkWithByte();
-        workWithByte.readFile("Data\\note.java");
+        workWithByte.readFile("Data\\note.java","Data\\ResultByte.txt");
         WorkWithSymbols workWithSymbols = new WorkWithSymbols();
-        workWithSymbols.readFile("Data\\note.java");
+        workWithSymbols.readFile("Data\\note.java","Data\\ResultSymbol.txt");
 
         FilmCollection fc = new FilmCollection();
         fc.addFilm(new Film("Интерстеллар", new Actor[]{new Actor("Мэттью", "Макконахи"), new Actor("Энн", "Хэтэуэй")}));

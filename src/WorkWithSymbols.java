@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 //Прочитайте файл, содержащий код на языке Java.
 // Определите, какие ключевые слова языка Java этот код содержит.
@@ -8,10 +9,11 @@ import java.util.ArrayList;
 
 public class WorkWithSymbols {
     private final String[] keywords = {"class", "public", "private", "void", "return", "this"};
-    private ArrayList<Integer> index = new ArrayList<Integer>();
-    private ArrayList<String> occurrences = new ArrayList<>();
 
-    public void readFile(String inpFile) {
+
+    public void readFile(String inpFile, String outFile) {
+        HashSet<Integer> index = new HashSet<Integer>();
+        ArrayList<String> occurrences = new ArrayList<>();
         StringBuilder res = new StringBuilder();
         try (BufferedReader fin = new BufferedReader(new FileReader(inpFile))) {
             int i;
@@ -40,7 +42,7 @@ public class WorkWithSymbols {
                 count = 0;
             }
             System.out.println(res);
-            System.out.println(writeToFile(res.toString()));
+            System.out.println(writeToFile(outFile, res.toString()));
 
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
@@ -49,8 +51,8 @@ public class WorkWithSymbols {
         }
     }
 
-    private String writeToFile(String text) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File("Data\\ResultSymbol.txt").getAbsoluteFile()))) {
+    private String writeToFile(String file, String text) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(file).getAbsoluteFile()))) {
 
             bw.write(text);
         } catch (FileNotFoundException e) {
